@@ -3,29 +3,27 @@ package kg.mega.student.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "students")
-@FieldDefaults (level = AccessLevel.PRIVATE)
+@Table(name = "schoolarships")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
-public class Student {
+public class Schoolarship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @JsonProperty("last_name")
-    String lastName;
-    String name;
-    String patronomyic;
-    boolean active;
-    String address;
+    int amount;
+    @JsonProperty("start_date")
+    @JsonFormat(pattern = "dd.MM.yyy hh:mm")
+    Date startDate;
+    @JsonProperty("end_date")
+    @JsonFormat(pattern = "dd.MM.yyy hh:mm")
+    Date endDate;
     @ManyToOne
-
-    Subject subject;
-
+    Student student;
 }
