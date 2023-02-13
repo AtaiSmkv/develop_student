@@ -19,16 +19,29 @@ public class TeacherServiceImpl implements TeacherService {
 
     public TeacherDto save(TeacherDto teacherDto) {
         Teacher teacher = this.teacherMapper.teacherDtoToTeacher(teacherDto);
-        teacher = (Teacher)this.teacherRepo.save(teacher);
+        teacher = teacherRepo.save(teacher);
         teacherDto.setId(teacher.getId());
         return teacherDto;
     }
 
     public TeacherDto findById(Long id) {
-        Teacher teacher = (Teacher)this.teacherRepo.findById(id).orElseThrow(() -> {
+        Teacher teacher = teacherRepo.findById(id).orElseThrow(() -> {
             return new RuntimeException("Преподаватель не найден");
         });
-        TeacherDto teacherDto = this.teacherMapper.teacherToTeacherDto(teacher);
+
+        TeacherDto teacherDto = teacherMapper.teacherToTeacherDto(teacher);
+        return teacherDto;
+    }
+
+    @Override
+    public TeacherDto update(TeacherDto teacherDto) {
+        Teacher teacher = teacherRepo.findById(teacherDto.getId()).get();
+        teacher = teacherMapper.teacherDtoToTeacherUpdate(teacherDto);
+
+        teacher = teacherRepo.save(teacher);
+        /*teacherDto.setId(teacher.getId());*/
+
+
         return teacherDto;
     }
 }

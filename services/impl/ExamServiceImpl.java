@@ -23,4 +23,11 @@ public class ExamServiceImpl implements ExamService {
         examDto.setId(examDto.getId());
         return examDto;
     }
+
+    @Override
+    public ExamDto findById(Long id) {
+        Exam exam = examRepo.findById(id).get();
+        ExamDto examDto = examMapper.examToExamDto(exam);
+        return examDto;
+    }
 }

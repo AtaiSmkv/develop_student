@@ -27,4 +27,15 @@ public class TeacherMapper {
         teacherDto.setPatronymic(teacher.getPatronymic());
         return teacherDto;
     }
+    public Teacher teacherDtoToTeacherUpdate(TeacherDto teacherDto) {
+        Teacher teacher = new Teacher();
+        teacher.setId(teacherDto.getId());
+        teacher.setName(teacherDto.getName());
+        teacher.setLastName(teacherDto.getLastName());
+        teacher.setActive(teacherDto.isActive());
+        teacher.setPatronymic(teacherDto.getPatronymic());
+        return teacher;
+    }
+
+
 }

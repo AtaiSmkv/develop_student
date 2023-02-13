@@ -2,12 +2,9 @@ package kg.mega.student.controllers;
 
 import kg.mega.student.models.dto.ExamDto;
 import kg.mega.student.services.ExamService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-    @RestController
+@RestController
     @RequestMapping({"/exam"})
     public class ExamController {
         private final ExamService examService;
@@ -22,5 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 
             return examService.save(examDto);
         }
+
+        @GetMapping("/findById")
+         public ExamDto findById(@RequestParam Long id) {
+            return examService.findById(id);
+        }
+
+
+
 
 }

@@ -1,11 +1,15 @@
 package kg.mega.student.services;
 
+import kg.mega.student.models.Student;
 import kg.mega.student.models.dto.StudentDto;
 import kg.mega.student.models.dto.StudentGetDto;
+
+import java.util.List;
 
 public interface StudentService {
 
     StudentDto save(StudentDto studentDto);
 
-    StudentGetDto findById(Long id);
+    StudentDto findById(Long id);
+    List<Student> findAll();
 }

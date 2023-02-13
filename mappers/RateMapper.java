@@ -13,6 +13,7 @@ public class RateMapper {
 
     public Rates ratesDtoToRates(RatesDto ratesDto) {
         Rates rates = new Rates();
+        rates.setScore(rates.getScore());
         Student student = new Student();
         student.setId(ratesDto.getStudent().getId());
         rates.setStudent(student);
