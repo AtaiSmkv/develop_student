@@ -1,4 +1,9 @@
 package kg.mega.student.services;
 
-public class TeacherService {
+import kg.mega.student.models.dto.TeacherDto;
+
+public interface TeacherService {
+    TeacherDto save(TeacherDto teacherDto);
+
+    TeacherDto findById(Long id);
 }
