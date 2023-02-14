@@ -66,4 +66,19 @@ public class StudentMapper {
         subjectTeacherDto.setExamGetDtoList(examGetDto);
         studentGetDto.setSubjectTeacherDto(subjectTeacherDto);*/
     }
+
+    public Student studentDtoToStudentUpdate(StudentDto studentDto) {
+        Student student = new Student();
+        student.setId(studentDto.getId());
+        student.setLastName(studentDto.getLatName());
+        student.setName(studentDto.getName());
+        student.setPatronomyic(studentDto.getPatronymic());
+        student.setActive(studentDto.isActive());
+        student.setAddress(studentDto.getAddress());
+        Subject subject = new Subject();
+        subject.setId(studentDto.getSubject().getId());
+        student.setSubject(subject);
+        return student;
+
+    }
 }

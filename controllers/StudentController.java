@@ -33,4 +33,9 @@ public class StudentController {
     public List<Student> findAll(){
         return studentService.findAll();
     }
+
+    @PutMapping("/update")
+    public StudentDto update(@RequestBody StudentDto studentDto) {
+        return studentService.update(studentDto);
+    }
 }

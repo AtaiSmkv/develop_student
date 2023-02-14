@@ -35,13 +35,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public TeacherDto update(TeacherDto teacherDto) {
-        Teacher teacher = teacherRepo.findById(teacherDto.getId()).get();
-        teacher = teacherMapper.teacherDtoToTeacherUpdate(teacherDto);
 
+        Teacher teacher = teacherMapper.teacherDtoToTeacherUpdate(teacherDto);
         teacher = teacherRepo.save(teacher);
-        /*teacherDto.setId(teacher.getId());*/
-
-
-        return teacherDto;
+        return teacherMapper.teacherToTeacherDto(teacher);
     }
 }

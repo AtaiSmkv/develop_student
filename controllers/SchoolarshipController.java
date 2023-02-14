@@ -2,12 +2,7 @@ package kg.mega.student.controllers;
 
 import kg.mega.student.models.dto.SchoolarshipDto;
 import kg.mega.student.services.SchoolarshipService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping({"/schoolarship"})
@@ -26,5 +21,9 @@ public class SchoolarshipController {
     @GetMapping({"/findById"})
     public SchoolarshipDto findById(@RequestParam Long id) {
         return schoolarshipService.findById(id);
+    }
+    @PutMapping("/update")
+    public SchoolarshipDto update(@RequestBody SchoolarshipDto schoolarshipDto) {
+        return null; //schoolarshipService.update(schoolarshipDto);
     }
 }

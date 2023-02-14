@@ -48,4 +48,12 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAll() {
         return studentRepo.findAll();
     }
+
+    public StudentDto update(StudentDto studentDto) {
+        Student student = studentRepo.findById(studentDto.getId()).get();
+        student = studentMapper.studentDtoToStudentUpdate(studentDto);
+        student = studentRepo.save(student);
+        return studentDto;
+
+    }
 }

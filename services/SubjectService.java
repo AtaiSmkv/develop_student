@@ -6,4 +6,5 @@ public interface SubjectService {
     SubjectDto save(SubjectDto subjectDto);
 
     SubjectDto findById(Long id);
+    SubjectDto update(SubjectDto subjectDto);
 }

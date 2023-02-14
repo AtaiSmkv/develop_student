@@ -7,6 +7,9 @@ import kg.mega.student.repositories.SchoolarshipRepo;
 import kg.mega.student.services.SchoolarshipService;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
+
 @Service
 public class SchoolarshipServiceImpl implements SchoolarshipService {
     private final SchoolarshipMapper schoolarshipMapper;
@@ -18,15 +21,37 @@ public class SchoolarshipServiceImpl implements SchoolarshipService {
     }
 
     public SchoolarshipDto save(SchoolarshipDto schoolarshipDto) {
-        Schoolarship schoolarship = this.schoolarshipMapper.schoolarshipDtoToSchoolarship(schoolarshipDto);
-        schoolarship = (Schoolarship)this.schoolarshipRepo.save(schoolarship);
-        schoolarshipDto.setId(schoolarshipDto.getId());
+        Schoolarship schoolarship = schoolarshipMapper.schoolarshipDtoToSchoolarship(schoolarshipDto);
+        changeEndDate(schoolarship.getStudent().getId());
+        schoolarship = schoolarshipRepo.save(schoolarship);
+        schoolarshipDto.setId(schoolarship.getId());
         return schoolarshipDto;
     }
 
     public SchoolarshipDto findById(Long id) {
-        Schoolarship schoolarship = (Schoolarship)this.schoolarshipRepo.findById(id).orElseThrow();
-        SchoolarshipDto schoolarshipDto = this.schoolarshipMapper.schoolarshipToSchoolarshipDto(schoolarship);
+        Schoolarship schoolarship = schoolarshipRepo.findById(id).orElseThrow();
+        SchoolarshipDto schoolarshipDto = schoolarshipMapper.schoolarshipToSchoolarshipDto(schoolarship);
         return schoolarshipDto;
+    }
+
+    public List<Schoolarship> changeEndDate(Long id) {
+    List<Schoolarship> oldSchoolarship = schoolarshipRepo.findByStudentlist(id);
+        for (Schoolarship item: oldSchoolarship) {
+            if(item.getEndDate().after(new Date())){
+                item.setEndDate(new Date());
+                save(schoolarshipMapper.schoolarshipToSchoolarshipDto(item));
+            }
+        }
+    return null;
+
+    }
+
+    public SchoolarshipDto update(Long id) {
+        Schoolarship schoolarship = schoolarshipRepo.findById(id).get();
+        schoolarship = schoolarshipRepo.save(schoolarship);
+
+        return null;
+
+
     }
 }

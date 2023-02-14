@@ -32,4 +32,16 @@ public class SchoolarshipMapper {
         schoolarshipDto.setStudent(schoolarship.getStudent());
         return schoolarshipDto;
     }
+
+    public Schoolarship schoolarshipDtoToSchoolarshipUpdate(SchoolarshipDto schoolarshipDto) {
+        Schoolarship schoolarship = new Schoolarship();
+        Student student = new Student();
+        schoolarship.setId(schoolarshipDto.getId());
+        schoolarship.setAmount(schoolarshipDto.getAmount());
+        schoolarship.setStartDate(new Date());
+        schoolarship.setEndDate(DateUtil.getInstance().getEndDate());
+        schoolarship.setStudent(student);
+        student.setId(schoolarshipDto.getStudent().getId());
+        return schoolarship;
+    }
 }

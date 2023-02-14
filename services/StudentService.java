@@ -12,4 +12,5 @@ public interface StudentService {
 
     StudentDto findById(Long id);
     List<Student> findAll();
+    StudentDto update(StudentDto studentDto);
 }
