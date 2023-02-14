@@ -46,12 +46,5 @@ public class SchoolarshipServiceImpl implements SchoolarshipService {
 
     }
 
-    public SchoolarshipDto update(Long id) {
-        Schoolarship schoolarship = schoolarshipRepo.findById(id).get();
-        schoolarship = schoolarshipRepo.save(schoolarship);
 
-        return null;
-
-
-    }
 }

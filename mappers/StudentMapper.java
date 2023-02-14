@@ -27,6 +27,7 @@ public class StudentMapper {
 
     public Student studentDtoToStudent(StudentDto studentDto) {
         Student student = new Student();
+        studentDto.setId(student.getId());
         student.setLastName(studentDto.getLatName());
         student.setName(studentDto.getName());
         student.setPatronomyic(studentDto.getPatronymic());
@@ -40,7 +41,7 @@ public class StudentMapper {
 
     public StudentDto studentToStudentDto(Student student) {
         StudentDto studentDto = new StudentDto();
-        studentDto.setId(student.getId());
+
         studentDto.setName(student.getName());
         studentDto.setLatName(student.getLastName());
         studentDto.setPatronymic(student.getPatronomyic());
@@ -67,18 +68,5 @@ public class StudentMapper {
         studentGetDto.setSubjectTeacherDto(subjectTeacherDto);*/
     }
 
-    public Student studentDtoToStudentUpdate(StudentDto studentDto) {
-        Student student = new Student();
-        student.setId(studentDto.getId());
-        student.setLastName(studentDto.getLatName());
-        student.setName(studentDto.getName());
-        student.setPatronomyic(studentDto.getPatronymic());
-        student.setActive(studentDto.isActive());
-        student.setAddress(studentDto.getAddress());
-        Subject subject = new Subject();
-        subject.setId(studentDto.getSubject().getId());
-        student.setSubject(subject);
-        return student;
 
-    }
 }

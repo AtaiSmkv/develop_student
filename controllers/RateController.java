@@ -2,10 +2,7 @@ package kg.mega.student.controllers;
 
 import kg.mega.student.models.dto.RatesDto;
 import kg.mega.student.services.RateService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping({"/rate"})
@@ -21,5 +18,9 @@ public class RateController {
     public RatesDto save(@RequestBody RatesDto ratesDto) {
 
         return rateService.save(ratesDto);
+    }
+    @GetMapping("/findById")
+    public RatesDto findById(@RequestParam Long id) {
+        return rateService.findById(id);
     }
 }

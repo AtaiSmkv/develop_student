@@ -32,10 +32,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public StudentDto save(StudentDto studentDto) {
-        Student student = this.studentMapper.studentDtoToStudent(studentDto);
-        student = (Student)this.studentRepo.save(student);
+        Student student = studentMapper.studentDtoToStudent(studentDto);
+        student = studentRepo.save(student);
         studentDto.setId(studentDto.getId());
         return studentDto;
+
     }
 @Override
     public StudentDto findById(Long id) {
@@ -50,8 +51,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public StudentDto update(StudentDto studentDto) {
-        Student student = studentRepo.findById(studentDto.getId()).get();
-        student = studentMapper.studentDtoToStudentUpdate(studentDto);
+        Student student = studentMapper.studentDtoToStudent(studentDto);
         student = studentRepo.save(student);
         return studentDto;
 

@@ -22,8 +22,5 @@ public class SchoolarshipController {
     public SchoolarshipDto findById(@RequestParam Long id) {
         return schoolarshipService.findById(id);
     }
-    @PutMapping("/update")
-    public SchoolarshipDto update(@RequestBody SchoolarshipDto schoolarshipDto) {
-        return null; //schoolarshipService.update(schoolarshipDto);
-    }
+
 }

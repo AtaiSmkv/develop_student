@@ -7,6 +7,6 @@ public interface SchoolarshipService {
     SchoolarshipDto save(SchoolarshipDto schoolarshipDto);
 
     SchoolarshipDto findById(Long id);
-    SchoolarshipDto update(Long id);
+
 
 }

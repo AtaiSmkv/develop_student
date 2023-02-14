@@ -18,9 +18,16 @@ public class RateServiceImpl implements RateService {
     }
 
     public RatesDto save(RatesDto ratesDto) {
-        Rates rates = this.rateMapper.ratesDtoToRates(ratesDto);
-        rates = (Rates)this.rateRepo.save(rates);
+        Rates rates = rateMapper.ratesDtoToRates(ratesDto);
+        rates = rateRepo.save(rates);
         ratesDto.setId(ratesDto.getId());
+        return ratesDto;
+    }
+
+    @Override
+    public RatesDto findById(Long id) {
+        Rates rates = rateRepo.findById(id).get();
+        RatesDto ratesDto = rateMapper.ratesToRateDto(rates);
         return ratesDto;
     }
 }
