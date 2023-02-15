@@ -35,6 +35,6 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public List<Rates> findAll() {
-        return null;
+        return rateRepo.findAll();
     }
 }
