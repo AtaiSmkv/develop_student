@@ -34,6 +34,11 @@ public class SchoolarshipServiceImpl implements SchoolarshipService {
         return schoolarshipDto;
     }
 
+    @Override
+    public List<Schoolarship> findAll() {
+        return schoolarshipRepo.findAll();
+    }
+
     public List<Schoolarship> changeEndDate(Long id) {
     List<Schoolarship> oldSchoolarship = schoolarshipRepo.findByStudentlist(id);
         for (Schoolarship item: oldSchoolarship) {

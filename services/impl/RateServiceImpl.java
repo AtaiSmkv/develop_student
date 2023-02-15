@@ -7,6 +7,8 @@ import kg.mega.student.repositories.RateRepo;
 import kg.mega.student.services.RateService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RateServiceImpl implements RateService {
     private final RateRepo rateRepo;
@@ -29,5 +31,10 @@ public class RateServiceImpl implements RateService {
         Rates rates = rateRepo.findById(id).get();
         RatesDto ratesDto = rateMapper.ratesToRateDto(rates);
         return ratesDto;
+    }
+
+    @Override
+    public List<Rates> findAll() {
+        return null;
     }
 }
