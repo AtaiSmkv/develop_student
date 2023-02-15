@@ -7,6 +7,8 @@ import kg.mega.student.repositories.TeacherRepo;
 import kg.mega.student.services.TeacherService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeacherServiceImpl implements TeacherService {
     private final TeacherMapper teacherMapper;
@@ -39,5 +41,10 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher teacher = teacherMapper.teacherDtoToTeacherUpdate(teacherDto);
         teacher = teacherRepo.save(teacher);
         return teacherMapper.teacherToTeacherDto(teacher);
+    }
+
+    @Override
+    public List<Teacher> findAll() {
+        return teacherRepo.findAll();
     }
 }

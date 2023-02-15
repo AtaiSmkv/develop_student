@@ -1,6 +1,7 @@
 package kg.mega.student.controllers;
 
 import kg.mega.student.models.Schoolarship;
+import kg.mega.student.models.Teacher;
 import kg.mega.student.models.dto.TeacherDto;
 import kg.mega.student.services.TeacherService;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class TeacherController {
         return teacherService.update(teacherDto);
     }
     @GetMapping("/findAll")
-    public List<Schoolarship> findAll() {
-        return schoolarshipService.findAll();
+    public List<Teacher> findAll() {
+        return teacherService.findAll();
     }
 }
