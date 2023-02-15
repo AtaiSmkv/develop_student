@@ -7,6 +7,8 @@ import kg.mega.student.repositories.ExamRepo;
 import kg.mega.student.services.ExamService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ExamServiceImpl implements ExamService {
     private final ExamRepo examRepo;
@@ -29,5 +31,9 @@ public class ExamServiceImpl implements ExamService {
         Exam exam = examRepo.findById(id).get();
         ExamDto examDto = examMapper.examToExamDto(exam);
         return examDto;
+    }
+    @Override
+    public List<Exam> findAll() {
+        return examRepo.findAll();
     }
 }
